@@ -7,15 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Domain {
-  domain      String  @unique
-  isDonated   Boolean @default(false)
-  DID         Int     @unique @default(autoincrement())
-  donatedBy   Int
-  userOnly    Boolean @default(false)
-  allowedUser String?
-}
-
 model File {
   filename  String   @unique
   UPID      Int      @id @default(autoincrement())
@@ -23,53 +14,4 @@ model File {
   UUsername String
   createdAt DateTime @default(now())
   allowed   Boolean @default(true)
-}
-
-model Invite {
-  code      String   @unique
-  createdAt DateTime @default(now())
-  IID       Int      @id @default(autoincrement())
-  CID       Int
-  usable    Boolean  @default(true)
-}
-
-model Testimonal {
-  Testimonal String
-  TID        Int    @id @default(autoincrement())
-  CID        Int
-}
-
-model User {
-  id                String   @id
-  uid               Int      @unique @default(autoincrement())
-  username          String   @unique
-  password          String   @unique
-  invites           Int      @default(0)
-  invite            String
-  premiumState      Boolean  @default(false)
-  premiumUntil      String?
-  usersInvited      String?  @default("N/A")
-  discordId         Int?
-  domain            String   @default("impr.starrain.cc")
-  primaryApiKey     String   @unique
-  secondaryApiKey   String   @unique
-  role              Role     @default(User)
-  createdAt         DateTime @default(now())
-  embed             Boolean  @default(false)
-  embedAuthor       Boolean  @default(true)
-  embedAuthorString String   @default("N/A")
-  embedTitle        String   @default("N/A")
-  embedDescription  String   @default("N/A")
-  embedColor        String   @default("#d4ad4c")
-  blacklisted       Boolean  @default(false)
-  blacklistReason   String?
-  SID               String   @unique
-}
-
-enum Role {
-  User
-  Mod
-  Admin
-  Dev
-  Owner
 }
