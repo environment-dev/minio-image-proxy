@@ -2,7 +2,7 @@
   "name": "image-proxy",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/starrain-cc/image-proxy.git",
+  "repository": "https://github.com/environment-dev/minio-image-proxy",
   "author": "environment-dev <81181499+environment-dev@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
